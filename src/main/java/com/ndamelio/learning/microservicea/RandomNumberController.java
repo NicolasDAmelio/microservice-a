@@ -1,7 +1,7 @@
 package com.ndamelio.learning.microservicea;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 public class RandomNumberController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(RandomNumberController.class);
+    private Log log = LogFactory.getLog(RandomNumberController.class);
 
     @RequestMapping("/random")
     public List<Integer> random() {
@@ -19,7 +19,7 @@ public class RandomNumberController {
         for (int i = 1; i <= 5; i++) {
             numbers.add(generateRandomNumber());
         }
-        LOG.warn("Returning {}", numbers);
+        log.warn("Returning "+ numbers);
         return numbers;
     }
 
